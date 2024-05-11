@@ -7,7 +7,7 @@ var config = require('./config')
 var WXBizDataCrypt = require('./WXBizDataCrypt')
 var app = express()
 
-const port = 9999
+const port = 9000
 
 // 存储所有用户信息
 const users = {
