@@ -70,14 +70,11 @@ app
         req.session.openId = user.openId
       }).then(() => {
         res.send({
-          statusCode: 200,
-          data: {
             errno: 0,
             data: {
               name: '111'
             }
-          }
-        })
+          })
       })
     } else {
       throw new Error('未知的授权类型')
