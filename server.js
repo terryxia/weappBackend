@@ -54,6 +54,7 @@ app
           grant_type: 'authorization_code'
         }
       }).then(({data}) => {
+        console.log('data---', data);
         var openId = data.openid
         var user = users[openId]
         if (!user) {
@@ -109,12 +110,15 @@ app
     var user = req.user
     if (user) {
       var {encryptedData, iv} = req.body
-      var pc = new WXBizDataCrypt(config.appId, user.sessionKey)
+      var pc = new WXBizDataCrypt(config.appId, user.sessionKey);
+      var data;
       try {
-        var data = pc.decryptData(encryptedData, iv)
+        data = pc.decryptData(encryptedData, iv);
+        console.log('用户数据:', data);
       } catch (err) {
         throw new Error('session 失效建议重新登录')
       }
+      // console.log('用户数据:', data);
       Object.assign(user, data)
       return res.send({
         code: 0
