@@ -70,7 +70,13 @@ app
         req.session.openId = user.openId
       }).then(() => {
         res.send({
-          code: 0
+          statusCode: 200,
+          data: {
+            errno: 0,
+            data: {
+              name: '111'
+            }
+          }
         })
       })
     } else {
