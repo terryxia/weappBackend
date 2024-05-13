@@ -59,6 +59,7 @@ app
           grant_type: 'authorization_code'
         }
       }).then(({data}) => {
+        console.log('data---', data);
         var openId = data.openid;
         var sessionKey = data.session_key;
 
